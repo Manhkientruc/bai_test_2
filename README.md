@@ -28,7 +28,7 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     sudo apt update
     sudo apt install python3 python3-pip python3-venv -y
 
-    - Rồi kiểm tra:
+    # Rồi kiểm tra:
         python3 --version
         pip3 --version
 - Trên Windows:
@@ -37,7 +37,7 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     2. Tải bản Python 3.10+
         Nhớ tick ô “Add Python to PATH” khi cài!
 
-    3. Kiểm tra sau khi cài:
+    # Kiểm tra sau khi cài:
         python3 --version
         pip3 --version
 ### 1. Cài đặt môi trường ảo (virtual environment)
