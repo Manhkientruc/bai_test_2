@@ -27,31 +27,32 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 # Trên Ubuntu / Debian / Linux WSL:
     sudo apt update
     sudo apt install python3 python3-pip python3-venv -y
-
 # Rồi kiểm tra:
     python3 --version
     pip3 --version
+
 # Trên Windows:
     1. Truy cập: https://www.python.org/downloads/
 
     2. Tải bản Python 3.10+
         Nhớ tick ô “Add Python to PATH” khi cài!
 
-    # Kiểm tra sau khi cài:
+# Kiểm tra sau khi cài:
         python3 --version
         pip3 --version
+
 ### 1. Cài đặt môi trường ảo (virtual environment)
     python3 -m venv venv
     source venv/bin/activate        # Trên Linux/macOS
     venv\Scripts\activate           # Trên Windows
 
-### 1. Cài đặt thư viện
+### 2. Cài đặt thư viện
     pip install -r requirements.txt
-### 2. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
+### 3. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
     python -m textblob.download_corpora
-### 3. Chạy server
+### 4. Chạy server
     uvicorn main:app --reload
-### 4. Truy cập hệ thống
+### 5. Truy cập hệ thống
     Giao diện người dùng: http://localhost:8000/
 
     Swagger UI (dành cho dev): http://localhost:8000/docs
