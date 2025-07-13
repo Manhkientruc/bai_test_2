@@ -24,13 +24,13 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 ## Cài đặt và chạy
 
 ### 0. Cài đặt python
-- Trên Ubuntu / Debian / Linux WSL:
+# Trên Ubuntu / Debian / Linux WSL:
     sudo apt update
     sudo apt install python3 python3-pip python3-venv -y
 
-    # Rồi kiểm tra:
-        python3 --version
-        pip3 --version
+# Rồi kiểm tra:
+    python3 --version
+    pip3 --version
 - Trên Windows:
     1. Truy cập: https://www.python.org/downloads/
 
