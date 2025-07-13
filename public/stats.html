@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Thống Kê Tổng Hợp</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+    .keywords {
+      margin-top: 1rem;
+      background: #f8f8f8;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Thống Kê Cuộc Gọi</h1>
+  <div id="stats">Đang tải dữ liệu...</div>
+
+  <script>
+    async function fetchStats() {
+      const res = await fetch("/stats");
+      if (!res.ok) {
+        document.getElementById("stats").innerHTML = "❌ Không thể tải thống kê!";
+        return;
+      }
+
+      const data = await res.json();
+
+      document.getElementById("stats").innerHTML = `
+        <ul>
+          <li><strong>Tổng số cuộc gọi:</strong> ${data.total_calls}</li>
+          <li><strong>Tổng số từ:</strong> ${data.total_words}</li>
+          <li><strong>Số từ trung bình mỗi cuộc gọi:</strong> ${data.average_words_per_call.toFixed(2)}</li>
+          <li><strong>Số câu trung bình mỗi cuộc gọi:</strong> ${data.average_sentences_per_call.toFixed(2)}</li>
+          <li><strong>Cảm xúc trung bình (polarity):</strong> ${data.average_polarity.toFixed(3)}</li>
+          <li><strong>Chủ quan trung bình (subjectivity):</strong> ${data.average_subjectivity.toFixed(3)}</li>
+        </ul>
+
+        <div class="keywords">
+          <strong>🔑 Top từ khoá chung:</strong>
+          <ul>
+            ${data.top_keywords.map(([word, count]) => `<li>${word} — ${count}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+    fetchStats();
+  </script>
+  <hr />
+    <button onclick="location.href='/index.html'" style="margin-top: 1rem;">
+    ⬅️ Quay lại menu chính
+    </button>
+</body>
+</html>

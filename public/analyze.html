@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔍 Phân Tích Cuộc Gọi</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    pre {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Phân Tích Cuộc Gọi</h1>
+  <div id="info"></div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const callId = urlParams.get("id");
+
+    if (!callId) {
+      document.getElementById("info").innerHTML = "<p>❌ Không tìm thấy ID cuộc gọi.</p>";
+    } else {
+      async function fetchAnalysis() {
+        const callRes = await fetch(`/calls/${callId}`);
+        const analyzeRes = await fetch(`/calls/${callId}/analyze`);
+
+        if (!callRes.ok || !analyzeRes.ok) {
+          document.getElementById("info").innerHTML = "<p>❌ Cuộc gọi không tồn tại.</p>";
+          return;
+        }
+
+        const call = await callRes.json();
+        const analysis = await analyzeRes.json();
+
+        document.getElementById("info").innerHTML = `
+          <p><strong>ID:</strong> ${call.id}</p>
+          <p><strong>File:</strong> ${call.filename}</p>
+          <p><strong>Ngày upload:</strong> ${new Date(call.uploaded_at).toLocaleString()}</p>
+          <p><strong>Transcript:</strong></p>
+          <pre>${call.transcript}</pre>
+
+          <h3>📊 Phân tích</h3>
+          <ul>
+            <li>Số từ: ${analysis.analysis.word_count}</li>
+            <li>Số câu: ${analysis.analysis.sentence_count}</li>
+            <li>Cảm xúc (polarity): ${analysis.analysis.sentiment.polarity.toFixed(3)}</li>
+            <li>Chủ quan (subjectivity): ${analysis.analysis.sentiment.subjectivity.toFixed(3)}</li>
+          </ul>
+
+          <h4>🔑 Từ khóa:</h4>
+          <ul>
+            ${analysis.analysis.top_keywords.map(([word, count]) => `<li>${word} — ${count}</li>`).join("")}
+          </ul>
+        `;
+      }
+
+      fetchAnalysis();
+    }
+  </script>
+  <hr />
+  <button onclick="location.href='/index.html'" style="margin-top: 1rem;">
+    ⬅️ Quay lại menu chính
+  </button>
+</body>
+</html>

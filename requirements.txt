@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pydantic
+faster-whisper
+pydub
+ffmpeg-python
+textblob
