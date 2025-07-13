@@ -31,7 +31,7 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 # Rồi kiểm tra:
     python3 --version
     pip3 --version
-- Trên Windows:
+# Trên Windows:
     1. Truy cập: https://www.python.org/downloads/
 
     2. Tải bản Python 3.10+
