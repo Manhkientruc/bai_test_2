@@ -13,7 +13,7 @@ def chatbot_response(transcript: str) -> str:
         (r"\bcancel\b.*\baccount\b", "I'm sorry to hear that. I can help you cancel your account if you’d like."),
         (r"\bupdate\b.*\binfo\b|\bemail\b", "Want to update your information? I can guide you through."),
         (r"\bthanks\b|\bthank you\b", "You're welcome! Let me know if there's anything else. 🙌"),
-        (r"\bbye\b|\bgoodbye\b", "Goodbye! Have a great day ahead! 👋")
+        (r"\bbye\b|\bgoodbye\b", "Goodbye! Have a great day ahead! 👋"),
 
         #Vietnamese rules
         (r"\bxin chào\b|\bchào\b", "Chào bạn! Mình có thể giúp gì cho bạn nè? 👋"),
@@ -25,7 +25,7 @@ def chatbot_response(transcript: str) -> str:
         (r"\btạm biệt\b|\bhẹn gặp lại\b", "Tạm biệt bạn nhé, chúc một ngày vui vẻ 🧡"),
         (r"\bthanh toán\b|\bhóa đơn\b", "Bạn có thể kiểm tra hóa đơn trong phần tài khoản."),
         (r"\bgiao hàng\b|\bvận chuyển\b", "Thời gian giao hàng dự kiến là 3–5 ngày."),
-        (r"\bđơn hàng\b|\btrạng thái\b", "Bạn muốn kiểm tra đơn hàng à? Để mình kiểm tra giúp.")
+        (r"\bđơn hàng\b|\btrạng thái\b", "Bạn muốn kiểm tra đơn hàng à? Để mình kiểm tra giúp."),
 
         #Chinese rules
         (r"你好|您好", "你好～ 我可以幫你什麼呢？😄"),
@@ -36,7 +36,7 @@ def chatbot_response(transcript: str) -> str:
         (r"付款|支付|賬單|账单", "你可以在設定裡查詢付款資訊。"),
         (r"取消|刪除帳號", "你想取消帳號嗎？我可以協助。"),
         (r"謝謝|谢谢", "不客氣喔～ 祝你有美好的一天 🙌"),
-        (r"再見|拜拜", "再見啦！有需要再找我 👋")
+        (r"再見|拜拜", "再見啦！有需要再找我 👋"),
 
         #Japanese rules
         (r"こんにちは|こんばんは", "こんにちは！どのようにお手伝いできますか？😊"),
@@ -48,7 +48,7 @@ def chatbot_response(transcript: str) -> str:
         (r"キャンセル|削除", "アカウントをキャンセルしたい場合は、お手伝いします。"),
         (r"ありがとう|感謝", "どういたしまして！また何かあれば言ってくださいね 🙏"),
         (r"さようなら|バイバイ", "さようなら！良い一日を 👋"),
-        (r"メール|情報変更", "メールアドレスや情報の更新をご希望ですか？")
+        (r"メール|情報変更", "メールアドレスや情報の更新をご希望ですか？"),
 
         #Spanish rules
         (r"hola|buenas", "¡Hola! ¿En qué puedo ayudarte hoy? 😊"),
@@ -60,7 +60,7 @@ def chatbot_response(transcript: str) -> str:
         (r"cancelar|eliminar cuenta", "¿Deseas cancelar tu cuenta? Te puedo guiar."),
         (r"gracias|muchas gracias", "¡De nada! Estoy para ayudarte 🙌"),
         (r"adiós|hasta luego", "¡Hasta luego! Que tengas un buen día 👋"),
-        (r"pedido|estado", "¿Quieres revisar el estado de tu pedido? Te ayudo.")
+        (r"pedido|estado", "¿Quieres revisar el estado de tu pedido? Te ayudo."),
     ]
 
     transcript_lower = transcript.lower()
