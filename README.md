@@ -50,11 +50,11 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     pip install -r requirements.txt
 ### 3. Cài multipart
     pip install python-multipart
-### 3. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
+### 4. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
     python -m textblob.download_corpora
-### 4. Chạy server
+### 5. Chạy server
     uvicorn app.api:app --reload
-### 5. Truy cập hệ thống
+### 6. Truy cập hệ thống
     Giao diện người dùng: http://localhost:8000/
     Swagger UI (dành cho dev): http://localhost:8000/docs
 
