@@ -84,7 +84,7 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
   => Lý do chọn giải pháp này: giúp hệ thống chịu tải tốt hơn, không block request, mở rộng dễ (scalable).
 
 2. Làm sao để đánh giá cảm xúc (sentiment) chính xác hơn từ transcript?
-- Hướng tiếp cận:
+- Hướng tiếp cận: 
     *Dùng thư viện NLP có sẵn: như TextBlob, VADER (cho tiếng Anh), hoặc underthesea/pyvi cho tiếng Việt để phân tích sentiment dựa trên từ ngữ tích cực/tiêu cực.
     *Fine-tune mô hình ML/AI: như BERT hoặc DistilBERT trên tập dữ liệu tiếng nói khách hàng (có label cảm xúc).
     *Sử dụng dịch vụ AI của bên thứ ba: như Google Cloud Natural Language API, AWS Comprehend, OpenAI API (nếu được phép dùng).
