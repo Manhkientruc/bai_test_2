@@ -98,7 +98,7 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     - Decouple: Tách biệt giữa việc nhận request và xử lý nặng.
     - Retry + Load Balancing: Có thể retry task fail, scale worker xử lý.
     - Không block API chính: /upload vẫn response nhanh, còn xử lý Whisper là việc của service khác.
-      #### Có thể dùng REST API nội bộ gọi qua requests.post(...) sang container analyze, nhưng message queue vẫn tốt hơn về hiệu năng và ổn định.
+        - Có thể dùng REST API nội bộ gọi qua requests.post(...) sang container analyze, nhưng message queue vẫn tốt hơn về hiệu năng và ổn định.
 
 ## Ghi chú
 - Hệ thống hiện sử dụng danh sách giả lập calls_db thay cho cơ sở dữ liệu thật.
