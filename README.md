@@ -46,6 +46,8 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     venv\Scripts\activate           # Trên Windows
 #### 1.1. (Tip) Có thể phải cài thêm extension Powershell nếu gặp lỗi
     @id:ms-vscode.powershell
+    - gõ " Ctrl + SHIFT + P " rồi tìm Powershell: Show Session Menu rồi chọn Restart current session
+    - khi này sẽ chuyển vào Powershell Extension thay vì powershell mặc định
 
 ### 2. Cài đặt thư viện
     pip install -r requirements.txt
