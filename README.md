@@ -44,11 +44,12 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     python -m venv venv
     source venv/bin/activate        # Trên Linux/macOS
     venv\Scripts\activate           # Trên Windows
-#### 1.1. (Tip) Có thể phải cài thêm extension Powershell nếu gặp lỗi
+#### 1.1. (Tip) Có thể phải cài thêm extension Powershell nếu gặp lỗi khi gõ venv\Scripts\activate
     @id:ms-vscode.powershell
     - gõ " Ctrl + SHIFT + P " rồi tìm Powershell: Show Session Menu rồi chọn Restart current session
     - khi này sẽ chuyển vào Powershell Extension thay vì powershell mặc định
-
+    - khi này gõ lại venv\Scripts\activate sẽ có thể kích hoạt được môi trường ảo (venv)
+    
 ### 2. Cài đặt thư viện
     pip install -r requirements.txt
     
