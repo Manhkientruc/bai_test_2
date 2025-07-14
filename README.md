@@ -54,7 +54,6 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     uvicorn main:app --reload
 ### 5. Truy cập hệ thống
     Giao diện người dùng: http://localhost:8000/
-
     Swagger UI (dành cho dev): http://localhost:8000/docs
 
 ## Các trang giao diện
@@ -69,16 +68,41 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 
 ## Hỗ trợ định dạng âm thanh
 - Các định dạng được hỗ trợ bao gồm: .mp3, .wav, .m4a, .ogg, .flac
-
 - Việc xử lý âm thanh sử dụng ffmpeg (qua pydub) nên có thể mở rộng thêm nếu cần
-
 - Nếu upload định dạng không hỗ trợ, hệ thống sẽ báo lỗi
+
+## Câu hỏi mở rộng
+1. Vấn đề khi nhiều người POST /analyze cùng lúc
+- Vấn đề: Endpoint POST /analyze hiện tại xử lý đồng bộ (synchronous) – tức là upload xong thì server chờ chuyển đổi file bằng Whisper luôn.
+        Với các file lớn, việc xử lý này rất tốn thời gian CPU.
+        Nếu nhiều người upload cùng lúc, server sẽ bị tắc nghẽn, response chậm hoặc thậm chí treo/delay hàng loạt request.
+
+- Giải pháp: Chuyển sang xử lý bất đồng bộ (asynchronous) bằng cách:
+    Khi user upload file -> hệ thống xếp hàng (queue) file để xử lý sau -> trả về call_id hoặc status: processing.
+    Một background worker (ví dụ dùng Celery, hoặc ThreadPool + asyncio) sẽ xử lý lần lượt các file trong queue.
+    Người dùng có thể truy vấn trạng thái xử lý qua endpoint GET /calls/{call_id}.
+  => Lý do chọn giải pháp này: giúp hệ thống chịu tải tốt hơn, không block request, mở rộng dễ (scalable).
+
+2. Làm sao để đánh giá cảm xúc (sentiment) chính xác hơn từ transcript?
+- Hướng tiếp cận:
+    Dùng thư viện NLP có sẵn: như TextBlob, VADER (cho tiếng Anh), hoặc underthesea/pyvi cho tiếng Việt để phân tích sentiment dựa trên từ ngữ tích cực/tiêu cực.
+    Fine-tune mô hình ML/AI: như BERT hoặc DistilBERT trên tập dữ liệu tiếng nói khách hàng (có label cảm xúc).
+    Sử dụng dịch vụ AI của bên thứ ba: như Google Cloud Natural Language API, AWS Comprehend, OpenAI API (nếu được phép dùng).
+  => Có thể lưu trường sentiment: "positive" | "neutral" | "negative" trong Call để hiển thị/thống kê sau.
+
+3. Tách /analyze thành microservice – nên dùng gì?
+- Giải pháp:
+    Tách /analyze thành 1 microservice riêng, và giao tiếp với backend chính qua Message Queue (ví dụ: RabbitMQ, Redis Queue, Kafka).
+
+- Lý do dùng message queue?
+    Decouple: Tách biệt giữa việc nhận request và xử lý nặng.
+    Retry + Load Balancing: Có thể retry task fail, scale worker xử lý.
+    Không block API chính: /upload vẫn response nhanh, còn xử lý Whisper là việc của service khác.
+    * Có thể dùng REST API nội bộ gọi qua requests.post(...) sang container analyze, nhưng message queue vẫn tốt hơn về hiệu năng và ổn định.
 
 ## Ghi chú
 - Hệ thống hiện sử dụng danh sách giả lập calls_db thay cho cơ sở dữ liệu thật.
-
 - Tất cả chức năng đã có giao diện trực quan, dễ sử dụng.
-
 - Giao diện chạy thuần HTML/JS, không cần framework frontend.
 
 ## Tác giả
