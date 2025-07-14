@@ -48,6 +48,8 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 
 ### 2. Cài đặt thư viện
     pip install -r requirements.txt
+### 3. Cài multipart
+    pip install python-multipart
 ### 3. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
     python -m textblob.download_corpora
 ### 4. Chạy server
