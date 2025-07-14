@@ -45,6 +45,8 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     python -m venv venv
     source venv/bin/activate        # Trên Linux/macOS
     venv\Scripts\activate           # Trên Windows
+### 1.1. (Bonus) Có thể phải cài thêm extension Powershell nếu gặp lỗi
+    @id:ms-vscode.powershell
 
 ### 2. Cài đặt thư viện
     pip install -r requirements.txt
