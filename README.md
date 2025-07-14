@@ -33,7 +33,6 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
 
 # Trên Windows:
     1. Truy cập: https://www.python.org/downloads/
-
     2. Tải bản Python 3.10+
         Nhớ tick ô “Add Python to PATH” khi cài!
 
@@ -45,17 +44,21 @@ Dự án xây dựng hệ thống backend để xử lý các file âm thanh cu�
     python -m venv venv
     source venv/bin/activate        # Trên Linux/macOS
     venv\Scripts\activate           # Trên Windows
-### 1.1. (Bonus) Có thể phải cài thêm extension Powershell nếu gặp lỗi
+#### 1.1. (Tip) Có thể phải cài thêm extension Powershell nếu gặp lỗi
     @id:ms-vscode.powershell
 
 ### 2. Cài đặt thư viện
     pip install -r requirements.txt
+    
 ### 3. Cài multipart
     pip install python-multipart
+    
 ### 4. Tải dữ liệu cho TextBlob (chạy một lần duy nhất)
     python -m textblob.download_corpora
+    
 ### 5. Chạy server
-    uvicorn app.api:app --reload
+    uvicorn app.main:app --reload
+    
 ### 6. Truy cập hệ thống
     Giao diện người dùng: http://localhost:8000/
     Swagger UI (dành cho dev): http://localhost:8000/docs
